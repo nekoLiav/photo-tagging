@@ -1,0 +1,19 @@
+:root {
+  --bg-color: #121212;
+  --accent-color: #1a1a1a;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  font-size: 100%;
+}
+
+body {
+  background-color: var(--bg-color);
+}
