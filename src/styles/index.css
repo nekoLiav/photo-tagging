@@ -71,3 +71,20 @@ header {
   border-radius: 50%;
   position: absolute;
 }
+
+.click-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background: #121212;
+  color: white;
+}
+
+.click-menu p {
+  padding: 1rem;
+}
+
+.click-menu p:hover {
+  background: #333333;
+  cursor: pointer;
+}

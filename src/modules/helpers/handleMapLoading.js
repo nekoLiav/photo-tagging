@@ -1,6 +1,6 @@
 import { main } from '../globals';
 import renderSpaceWaldo from './renderSpaceWaldo';
-import handleCoordinateCheck from './handleCoordinateCheck';
+import handleUserGuess from './handleUserGuess';
 
 const handleMapLoading = (e) => {
   if (e.target.tagName === 'IMG') {
@@ -11,7 +11,7 @@ const handleMapLoading = (e) => {
       mapToLoad.classList.add('current-map');
     }
     main.append(mapToLoad);
-    main.addEventListener('click', handleCoordinateCheck);
+    main.addEventListener('click', handleUserGuess);
   }
 };
 

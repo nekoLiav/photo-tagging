@@ -1,4 +1,5 @@
 const handleCoordinateCheck = (e) => {
+  let found;
   if (e.target.classList.contains('current-map')) {
     const rect = e.target.getBoundingClientRect();
     const waldoX = 0.63;
@@ -14,7 +15,7 @@ const handleCoordinateCheck = (e) => {
         e.y > (rect.height * waldoY + rect.y) * 0.8 &&
         e.y < (rect.height * waldoY + rect.y) * 1.2
       ) {
-        console.log('found Waldo');
+        found = 'Waldo';
       }
     } else if (
       e.x > (rect.width * odlawX + rect.x) * 0.95 &&
@@ -24,12 +25,11 @@ const handleCoordinateCheck = (e) => {
         e.y > (rect.height * odlawX + rect.y) * 0.8 &&
         e.y < (rect.height * odlawY + rect.y) * 1.2
       ) {
-        console.log('found Odlaw');
+        found = 'Odlaw';
       }
-    } else {
-      console.log('found nothing :(');
     }
   }
+  return found;
 };
 
 export default handleCoordinateCheck;
