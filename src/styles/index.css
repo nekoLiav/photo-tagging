@@ -66,9 +66,8 @@ header {
   text-align: center;
 }
 
-.click-box {
-  border: 5px solid red;
-  border-radius: 50%;
+.click-circle {
+  border: 0.2rem solid greenyellow;
   position: absolute;
 }
 

@@ -1,13 +1,13 @@
 import { main } from '../globals';
 
 const renderClickCircle = (x, y) => {
-  const clickBox = document.createElement('div');
-  clickBox.className = 'click-box';
-  clickBox.style.left = `${x.toString()}px`;
-  clickBox.style.top = `${y.toString()}px`;
-  main.append(clickBox);
+  const clickCircle = document.createElement('div');
+  clickCircle.className = 'click-circle';
+  clickCircle.style.left = `${x.toString()}px`;
+  clickCircle.style.top = `${y.toString()}px`;
+  main.append(clickCircle);
   setTimeout(() => {
-    clickBox.remove();
+    clickCircle.remove();
   }, 2000);
 };
 

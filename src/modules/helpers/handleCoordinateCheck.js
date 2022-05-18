@@ -1,29 +1,57 @@
-const handleCoordinateCheck = (e) => {
+import firebase from '../../firebase/firebase';
+import renderClickCircle from './renderClickCircle';
+
+const handleCoordinateCheck = async (mapClickEvent) => {
   let found;
-  if (e.target.classList.contains('current-map')) {
-    const rect = e.target.getBoundingClientRect();
-    const waldoX = 0.63;
-    const waldoY = 0.33;
-    const odlawX = 0.108;
-    const odlawY = 0.43;
+  if (mapClickEvent.target.classList.contains('current-map')) {
+    const serverData = await firebase();
+    const rect = mapClickEvent.target.getBoundingClientRect();
+    const waldoToleranceX = 0.05;
+    const waldoToleranceY = 0.15;
+    const odlawToleranceX = 0.2;
+    const odlawToleranceY = 0.1;
+    const localWaldoPosX = rect.width * serverData.waldo.x;
+    const localWaldoPosY = rect.height * serverData.waldo.y;
+    const localOdlawPosX = rect.width * serverData.odlaw.x;
+    const localOdlawPosY = rect.height * serverData.odlaw.y;
+
+    renderClickCircle(localWaldoPosX + rect.x, localWaldoPosY + rect.y);
+    renderClickCircle(
+      localWaldoPosX * (1 + waldoToleranceX) + rect.x,
+      localWaldoPosY * (1 + waldoToleranceY) + rect.y
+    );
+    renderClickCircle(
+      localWaldoPosX * (1 - waldoToleranceX) + rect.x,
+      localWaldoPosY * (1 - waldoToleranceY) + rect.y
+    );
+
+    renderClickCircle(localOdlawPosX + rect.x, localOdlawPosY + rect.y);
+    renderClickCircle(
+      localOdlawPosX * (1 + odlawToleranceX) + rect.x,
+      localOdlawPosY * (1 + odlawToleranceY) + rect.y
+    );
+    renderClickCircle(
+      localOdlawPosX * (1 - odlawToleranceX) + rect.x,
+      localOdlawPosY * (1 - odlawToleranceY) + rect.y
+    );
 
     if (
-      e.x > (rect.width * waldoX + rect.x) * 0.95 &&
-      e.x < (rect.width * waldoX + rect.x) * 1.05
+      mapClickEvent.x > localWaldoPosX * (1 - waldoToleranceX) + rect.x &&
+      mapClickEvent.x < localWaldoPosX * (1 + waldoToleranceY) + rect.y
     ) {
       if (
-        e.y > (rect.height * waldoY + rect.y) * 0.8 &&
-        e.y < (rect.height * waldoY + rect.y) * 1.2
+        mapClickEvent.y > localWaldoPosY * (1 - waldoToleranceX) + rect.x &&
+        mapClickEvent.y < localWaldoPosY * (1 + waldoToleranceY) + rect.y
       ) {
         found = 'Waldo';
       }
     } else if (
-      e.x > (rect.width * odlawX + rect.x) * 0.95 &&
-      e.x < (rect.width * odlawX + rect.x) * 1.05
+      mapClickEvent.x > localOdlawPosX * (1 - odlawToleranceX) + rect.x &&
+      mapClickEvent.x < localOdlawPosX * (1 + odlawToleranceY) + rect.y
     ) {
       if (
-        e.y > (rect.height * odlawX + rect.y) * 0.8 &&
-        e.y < (rect.height * odlawY + rect.y) * 1.2
+        mapClickEvent.y > localOdlawPosY * (1 - odlawToleranceX) + rect.x &&
+        mapClickEvent.y < localOdlawPosY * (1 + odlawToleranceY) + rect.y
       ) {
         found = 'Odlaw';
       }

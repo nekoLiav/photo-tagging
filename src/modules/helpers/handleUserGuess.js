@@ -1,10 +1,9 @@
 import { main, currentMap } from '../globals';
-
 import handleCoordinateCheck from './handleCoordinateCheck';
 
-const handleUserGuess = (mapClickEvent) => {
+const handleUserGuess = async (mapClickEvent) => {
   if (mapClickEvent.target.classList.contains('current-map')) {
-    const found = handleCoordinateCheck(mapClickEvent);
+    const found = await handleCoordinateCheck(mapClickEvent);
 
     const clickMenu = document.createElement('div');
     clickMenu.className = 'click-menu';
