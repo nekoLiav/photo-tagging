@@ -1,8 +1,8 @@
-import spaceWaldo from '../../assets/maps/space-waldo.jpg';
+import spaceWaldoCrop from '../../assets/maps/space-waldo-crop.jpg';
 
 const renderSpaceWaldo = () => {
   const spaceWaldoImg = new Image();
-  spaceWaldoImg.src = spaceWaldo;
+  spaceWaldoImg.src = spaceWaldoCrop;
   spaceWaldoImg.className = 'space-waldo';
   return spaceWaldoImg;
 };
