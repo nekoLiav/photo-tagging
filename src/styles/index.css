@@ -38,14 +38,14 @@ header {
 
 .main {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
 }
 
 .main img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .map-select-container {
@@ -56,11 +56,18 @@ header {
 }
 
 .map-selection img {
-  width: 20rem;
+  width: 640px;
+  height: 360px;
   cursor: pointer;
 }
 
 .map-select-container p {
   color: white;
   text-align: center;
+}
+
+.click-box {
+  border: 5px solid red;
+  border-radius: 50%;
+  position: absolute;
 }
