@@ -11,9 +11,12 @@ const handleMapLoading = (e) => {
       mapToLoad = renderSpaceWaldo();
       mapToLoad.classList.add('current-map');
     }
+    const mapContainer = document.createElement('div');
+    mapContainer.className = 'map-container';
     const info = document.createElement('div');
     info.className = 'info';
-    main.append(info, mapToLoad);
+    mapContainer.append(info, mapToLoad);
+    main.append(mapContainer);
     handleTimer();
     main.addEventListener('click', handleUserGuess);
   }

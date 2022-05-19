@@ -1,4 +1,6 @@
-import { main, gameState } from './globals';
+import { mapContainer, gameState } from './globals';
+import firebaseLbAdd from '../firebase/handleLbAdd';
+import renderLeaderboard from './renderLeaderboard';
 
 const handleWin = () => {
   const winModal = document.createElement('div');
@@ -16,13 +18,14 @@ const handleWin = () => {
   submitButton.textContent = 'Submit';
 
   submitButton.addEventListener('click', () => {
-    console.log(nameInput.value);
+    firebaseLbAdd(nameInput.value, gameState.timer);
+    renderLeaderboard();
   });
 
   gameState.gameOver = true;
 
   winModal.append(winMessage, nameInput, submitButton);
-  main.append(winModal);
+  mapContainer[0].append(winModal);
 };
 
 export default handleWin;

@@ -1,10 +1,10 @@
-import firebase from '../firebase/firebase';
+import firebaseCoordsGet from '../firebase/firebaseCoordsGet';
 import mapConfig from './mapConfig';
 
 const handleCoordinateCheck = async (mapClickEvent) => {
   let found;
   if (mapClickEvent.target.classList.contains('current-map')) {
-    const rPos = await firebase();
+    const rPos = await firebaseCoordsGet();
 
     const rect = mapClickEvent.target.getBoundingClientRect();
 

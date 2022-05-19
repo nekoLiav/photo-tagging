@@ -1,4 +1,4 @@
-import { main } from './globals';
+import { mapContainer } from './globals';
 
 const renderBoundaries = (pX, rX, tX, pY, rY, tY) => {
   const bound = document.createElement('div');
@@ -15,7 +15,7 @@ const renderBoundaries = (pX, rX, tX, pY, rY, tY) => {
     rY -
     (pY * (1 - tY) + rY)
   ).toString()}px`;
-  main.append(bound);
+  mapContainer[0].append(bound);
 };
 
 export default renderBoundaries;
