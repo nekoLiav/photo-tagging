@@ -1,5 +1,6 @@
 import { main, currentMap } from '../globals';
 import handleCoordinateCheck from './handleCoordinateCheck';
+import renderBoundaries from './renderBoundaries';
 
 const handleUserGuess = async (mapClickEvent) => {
   if (mapClickEvent.target.classList.contains('current-map')) {
@@ -22,10 +23,21 @@ const handleUserGuess = async (mapClickEvent) => {
       main.append(clickMenu);
 
       clickMenu.addEventListener('click', (menuClickEvent) => {
-        if (menuClickEvent.target.textContent === found) {
-          console.log(`found ${found}`);
+        if (
+          found !== undefined &&
+          menuClickEvent.target.textContent === found.character
+        ) {
+          renderBoundaries(
+            found.posX,
+            found.rectX,
+            found.tolX,
+            found.poxY,
+            found.rectY,
+            found.tolY
+          );
+          console.log(`Found ${found.character}.`);
         } else {
-          console.log('found nothing');
+          console.log('Keep looking!');
         }
       });
 

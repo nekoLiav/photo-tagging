@@ -67,7 +67,7 @@ header {
 }
 
 .click-circle {
-  border: 0.2rem solid greenyellow;
+  border: 0.2rem solid red;
   position: absolute;
 }
 
