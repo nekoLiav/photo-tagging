@@ -27,15 +27,15 @@ const handleUserGuess = async (mapClickEvent) => {
           found !== undefined &&
           menuClickEvent.target.textContent === found.character
         ) {
-          renderBoundaries(
-            found.posX,
-            found.rectX,
-            found.tolX,
-            found.poxY,
-            found.rectY,
-            found.tolY
-          );
           console.log(`Found ${found.character}.`);
+          renderBoundaries(
+            found.pX,
+            found.rX,
+            found.tX,
+            found.pY,
+            found.rY,
+            found.tY
+          );
         } else {
           console.log('Keep looking!');
         }

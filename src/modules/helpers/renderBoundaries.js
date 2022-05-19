@@ -1,21 +1,21 @@
 import { main } from '../globals';
 
-const renderBoundaries = (posX, rectX, tolX, posY, rectY, tolY) => {
-  const clickCircle = document.createElement('div');
-  clickCircle.className = 'click-circle';
-  clickCircle.style.left = `${(posX * (1 - tolX) + rectX).toString()}px`;
-  clickCircle.style.top = `${(posY * (1 - tolY) + rectY).toString()}px`;
-  clickCircle.style.width = `${(
-    posX * (1 + tolX) +
-    rectX -
-    (posX * (1 - tolX) + rectX)
+const renderBoundaries = (pX, rX, tX, pY, rY, tY) => {
+  const bound = document.createElement('div');
+  bound.className = 'boundary';
+  bound.style.left = `${(pX * (1 - tX) + rX).toString()}px`;
+  bound.style.top = `${(pY * (1 - tY) + rY).toString()}px`;
+  bound.style.width = `${(
+    pX * (1 + tX) +
+    rX -
+    (pX * (1 - tX) + rX)
   ).toString()}px`;
-  clickCircle.style.height = `${(
-    posY * (1 + tolY) +
-    rectY -
-    (posY * (1 - tolY) + rectY)
+  bound.style.height = `${(
+    pY * (1 + tY) +
+    rY -
+    (pY * (1 - tY) + rY)
   ).toString()}px`;
-  main.append(clickCircle);
+  main.append(bound);
 };
 
 export default renderBoundaries;
