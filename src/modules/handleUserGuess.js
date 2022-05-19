@@ -1,8 +1,7 @@
-import { main, currentMap, gameState } from './globals';
+import { main, currentMap } from './globals';
 import handleCoordinateCheck from './handleCoordinateCheck';
-import renderBoundaries from './renderBoundaries';
-import handleWin from './handleWin';
 import handleMiss from './handleMiss';
+import handleHit from './handleHit';
 
 const handleUserGuess = async (mapClickEvent) => {
   if (mapClickEvent.target.classList.contains('current-map')) {
@@ -24,28 +23,10 @@ const handleUserGuess = async (mapClickEvent) => {
 
       clickMenu.addEventListener('click', async (menuClickEvent) => {
         const found = await handleCoordinateCheck(mapClickEvent);
-        if (
-          found !== undefined &&
-          menuClickEvent.target.textContent === found.character
-        ) {
-          if (found.character === 'Waldo') {
-            gameState.foundWaldo = true;
-          } else if (found.character === 'Odlaw') {
-            gameState.foundOdlaw = true;
-          }
-          renderBoundaries(
-            found.pX,
-            found.rX,
-            found.tX,
-            found.pY,
-            found.rY,
-            found.tY
-          );
-          if (gameState.foundWaldo && gameState.foundOdlaw) {
-            handleWin();
-          }
+        if (found !== undefined) {
+          handleHit(found, menuClickEvent);
         } else {
-          handleMiss();
+          handleMiss(menuClickEvent);
         }
       });
 

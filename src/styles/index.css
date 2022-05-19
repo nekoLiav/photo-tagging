@@ -38,8 +38,10 @@ header {
 
 .main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
   height: 100%;
   width: 100%;
 }
@@ -66,6 +68,16 @@ header {
   text-align: center;
 }
 
+.info {
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  height: 2rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
 .boundary {
   border: 0.2rem solid red;
   position: absolute;
@@ -77,6 +89,7 @@ header {
   position: absolute;
   background: #121212;
   color: white;
+  border-radius: 5px;
 }
 
 .click-menu p {
@@ -86,4 +99,38 @@ header {
 .click-menu p:hover {
   background: #333333;
   cursor: pointer;
+}
+
+.miss {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background: #121212;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.hit {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background: #121212;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.win {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background: #1a1a1a;
+  color: white;
+  width: 20rem;
+  height: 10rem;
+  left: (50% - 10rem);
+  top: (50% - 5rem);
+  border-radius: 5px;
 }
