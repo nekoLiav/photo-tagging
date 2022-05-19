@@ -1,11 +1,11 @@
-import { main, currentMap } from '../globals';
+import { main, currentMap, gameState } from './globals';
 import handleCoordinateCheck from './handleCoordinateCheck';
 import renderBoundaries from './renderBoundaries';
+import handleWin from './handleWin';
+import handleMiss from './handleMiss';
 
 const handleUserGuess = async (mapClickEvent) => {
   if (mapClickEvent.target.classList.contains('current-map')) {
-    const found = await handleCoordinateCheck(mapClickEvent);
-
     const clickMenu = document.createElement('div');
     clickMenu.className = 'click-menu';
 
@@ -22,12 +22,17 @@ const handleUserGuess = async (mapClickEvent) => {
       clickMenu.append(clickMenuWaldo, clickMenuOdlaw);
       main.append(clickMenu);
 
-      clickMenu.addEventListener('click', (menuClickEvent) => {
+      clickMenu.addEventListener('click', async (menuClickEvent) => {
+        const found = await handleCoordinateCheck(mapClickEvent);
         if (
           found !== undefined &&
           menuClickEvent.target.textContent === found.character
         ) {
-          console.log(`Found ${found.character}.`);
+          if (found.character === 'Waldo') {
+            gameState.foundWaldo = true;
+          } else if (found.character === 'Odlaw') {
+            gameState.foundOdlaw = true;
+          }
           renderBoundaries(
             found.pX,
             found.rX,
@@ -36,8 +41,11 @@ const handleUserGuess = async (mapClickEvent) => {
             found.rY,
             found.tY
           );
+          if (gameState.foundWaldo && gameState.foundOdlaw) {
+            handleWin();
+          }
         } else {
-          console.log('Keep looking!');
+          handleMiss();
         }
       });
 

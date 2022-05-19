@@ -3,7 +3,7 @@ import './styles/index.css';
 
 import { body, main, header } from './modules/globals';
 import mapSelect from './modules/mapSelect';
-import handleMainLoading from './modules/helpers/handleMainLoading';
+import handleMainLoading from './modules/handleMainLoading';
 import firebase from './firebase/firebase';
 
 body.append(main);

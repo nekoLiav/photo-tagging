@@ -1,5 +1,5 @@
-import { main } from '../globals';
-import mapSelect from '../mapSelect';
+import { main } from './globals';
+import mapSelect from './mapSelect';
 
 const handleMainLoading = (e) => {
   if (

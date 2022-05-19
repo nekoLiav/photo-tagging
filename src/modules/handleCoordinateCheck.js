@@ -1,5 +1,5 @@
-import firebase from '../../firebase/firebase';
-import mapConfig from '../mapConfig';
+import firebase from '../firebase/firebase';
+import mapConfig from './mapConfig';
 
 const handleCoordinateCheck = async (mapClickEvent) => {
   let found;

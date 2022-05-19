@@ -1,4 +1,4 @@
-import { main } from '../globals';
+import { main } from './globals';
 import renderSpaceWaldo from './renderSpaceWaldo';
 import handleUserGuess from './handleUserGuess';
 

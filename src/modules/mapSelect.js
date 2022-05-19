@@ -1,6 +1,6 @@
 import { main } from './globals';
-import renderSpaceWaldo from './helpers/renderSpaceWaldo';
-import handleMapLoading from './helpers/handleMapLoading';
+import renderSpaceWaldo from './renderSpaceWaldo';
+import handleMapLoading from './handleMapLoading';
 
 const mapSelect = () => {
   const mapSelectContainer = document.createElement('div');

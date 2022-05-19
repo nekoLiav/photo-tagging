@@ -1,4 +1,4 @@
-import { main } from '../globals';
+import { main } from './globals';
 
 const renderBoundaries = (pX, rX, tX, pY, rY, tY) => {
   const bound = document.createElement('div');
