@@ -10,7 +10,21 @@ const handleMapLoading = (e) => {
       mapToLoad = renderSpaceWaldo();
       mapToLoad.classList.add('current-map');
     }
-    main.append(mapToLoad);
+    const info = document.createElement('div');
+    const timerText = document.createElement('p');
+    let timer = 0;
+    info.className = 'info';
+    const toTime = (seconds) => {
+      const date = new Date(null);
+      date.setSeconds(seconds);
+      return date.toISOString().substring(14, 19);
+    };
+    setInterval(() => {
+      timer += 1;
+      timerText.textContent = toTime(timer);
+    }, 1000);
+    info.append(timerText);
+    main.append(info, mapToLoad);
     main.addEventListener('click', handleUserGuess);
   }
 };
