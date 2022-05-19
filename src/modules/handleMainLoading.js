@@ -1,4 +1,4 @@
-import { main } from './globals';
+import { main, gameState } from './globals';
 import mapSelect from './mapSelect';
 
 const handleMainLoading = (e) => {
@@ -8,6 +8,10 @@ const handleMainLoading = (e) => {
   ) {
     main.childNodes.forEach((child) => child.remove());
     mapSelect();
+    gameState.foundWaldo = false;
+    gameState.foundOdlaw = false;
+    gameState.timer = 0;
+    gameState.gameOver = false;
   }
 };
 
