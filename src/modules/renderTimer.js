@@ -1,4 +1,4 @@
-import { main, gameState } from './globals';
+import { mapContainer, gameState } from './globals';
 
 const renderTimer = () => {
   const timer = document.createElement('p');
@@ -19,7 +19,7 @@ const renderTimer = () => {
     }
   }, 1000);
 
-  main.append(timer);
+  mapContainer[0].append(timer);
 };
 
 export default renderTimer;

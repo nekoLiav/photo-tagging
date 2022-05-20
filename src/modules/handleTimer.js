@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import { gameState, info } from './globals';
+import formatTime from './formatTime';
 
 const handleTimer = () => {
   const timer = document.createElement('p');
@@ -7,9 +8,7 @@ const handleTimer = () => {
 
   const updateTimer = () => {
     gameState.timer += 1;
-    const date = new Date(null);
-    date.setSeconds(gameState.timer);
-    timer.textContent = date.toISOString().substring(14, 19);
+    timer.textContent = formatTime(gameState.timer);
   };
 
   const setTimer = setInterval(() => {
