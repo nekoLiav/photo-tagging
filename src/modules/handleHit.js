@@ -3,44 +3,24 @@ import renderBoundaries from './renderBoundaries';
 import handleWin from './handleWin';
 
 const handleHit = (found, menuClickEvent) => {
-  const renderHit = (foundChar) => {
-    renderBoundaries(
-      found.pX,
-      found.rX,
-      found.tX,
-      found.pY,
-      found.rY,
-      found.tY
-    );
-    const hit = document.createElement('p');
-    hit.className = 'hit';
-    hit.textContent = `You found ${foundChar}`;
+  const hit = document.createElement('p');
 
-    hit.style.left = `${menuClickEvent.x.toString()}px`;
-    hit.style.top = `${menuClickEvent.y.toString()}px`;
+  hit.className = 'hit';
+  hit.textContent = `You found ${found.key}`;
 
-    main.append(hit);
+  hit.style.left = `${menuClickEvent.pageX.toString()}px`;
+  hit.style.top = `${menuClickEvent.pageY.toString()}px`;
 
-    setTimeout(() => {
-      hit.remove();
-    }, 2000);
-  };
+  main.append(hit);
 
-  if (
-    found.character === 'Waldo' &&
-    menuClickEvent.target.textContent === 'Waldo'
-  ) {
-    gameState.foundWaldo = true;
-    renderHit('Waldo');
-  } else if (
-    found.character === 'Odlaw' &&
-    menuClickEvent.target.textContent === 'Odlaw'
-  ) {
-    gameState.foundOdlaw = true;
-    renderHit('Odlaw');
-  }
+  setTimeout(() => {
+    hit.remove();
+  }, 2000);
 
-  if (gameState.foundWaldo && gameState.foundOdlaw) {
+  renderBoundaries(found.pX, found.tX, found.pY, found.tY);
+  gameState.foundCount += 1;
+
+  if (gameState.foundCount === gameState.toFindCount) {
     handleWin();
   }
 };

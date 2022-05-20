@@ -20,9 +20,10 @@ const handleWin = () => {
   submitButton.addEventListener('click', () => {
     firebaseLbAdd(nameInput.value, gameState.timer);
     renderLeaderboard();
-    gameState.foundWaldo = false;
-    gameState.foundOdlaw = false;
+    gameState.currentMap = null;
     gameState.timer = 0;
+    gameState.foundCount = 0;
+    gameState.toFindCount = 0;
     gameState.gameOver = false;
   });
 

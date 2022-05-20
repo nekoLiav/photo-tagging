@@ -5,8 +5,9 @@ export const mapContainer = document.getElementsByClassName('map-container');
 export const info = document.getElementsByClassName('info');
 export const currentMap = document.getElementsByClassName('current-map');
 export const gameState = {
-  foundWaldo: false,
-  foundOdlaw: false,
+  currentMap: null,
   timer: 0,
+  foundCount: 0,
+  toFindCount: 0,
   gameOver: false,
 };

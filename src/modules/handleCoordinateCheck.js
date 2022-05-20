@@ -1,63 +1,49 @@
-import firebaseCoordsGet from '../firebase/firebaseCoordsGet';
-import mapConfig from './mapConfig';
+import { gameState, currentMap } from './globals';
 
-const handleCoordinateCheck = async (mapClickEvent) => {
+const handleCoordinateCheck = async (
+  mapClickEvent,
+  menuClickEvent,
+  serverData
+) => {
   let found;
   if (mapClickEvent.target.classList.contains('current-map')) {
-    const rPos = await firebaseCoordsGet();
-
-    const rect = mapClickEvent.target.getBoundingClientRect();
+    const rect = currentMap[0].getBoundingClientRect();
+    const iterableServerData = Object.entries(serverData);
+    gameState.toFindCount = iterableServerData.length;
+    const key = menuClickEvent.target.getAttribute('data-key');
+    let tolerances;
+    let coords;
+    iterableServerData.forEach((entry) => {
+      if (entry[0] === key) {
+        tolerances = entry[1].tolerances;
+        coords = entry[1].coords;
+      }
+    });
 
     // click area tolerances, percentage offset
-    const wTolX = mapConfig.spaceWaldo.tolerance.waldo.x;
-    const wTolY = mapConfig.spaceWaldo.tolerance.waldo.y;
-    const oTolX = mapConfig.spaceWaldo.tolerance.odlaw.x;
-    const oTolY = mapConfig.spaceWaldo.tolerance.odlaw.y;
+    const tX = tolerances.x;
+    const tY = tolerances.y;
 
-    // add rect.x/y to these to correctly offset within map
-    const wPosX = rect.width * rPos.waldo.x;
-    const wPosY = rect.height * rPos.waldo.y;
-    const oPosX = rect.width * rPos.odlaw.x;
-    const oPosY = rect.height * rPos.odlaw.y;
+    // locate key within image via percentage offset
+    const pX = rect.width * coords.x;
+    const pY = rect.height * coords.y;
 
     // click is within horizontal tolerance
     if (
-      mapClickEvent.x > wPosX * (1 - wTolX) + rect.x &&
-      mapClickEvent.x < wPosX * (1 + wTolX) + rect.x
+      mapClickEvent.x > pX * (1 - tX) + rect.x &&
+      mapClickEvent.x < pX * (1 + tX) + rect.x
     ) {
       // click is within vertical tolerance
       if (
-        mapClickEvent.y > wPosY * (1 - wTolY) + rect.y &&
-        mapClickEvent.y < wPosY * (1 + wTolY) + rect.y
+        mapClickEvent.y > pY * (1 - tY) + rect.y &&
+        mapClickEvent.y < pY * (1 + tY) + rect.y
       ) {
         found = {
-          character: 'Waldo',
-          pX: wPosX,
-          rX: rect.x,
-          tX: wTolX,
-          pY: wPosY,
-          rY: rect.y,
-          tY: wTolY,
-        };
-      }
-      // click is within horizontal tolerance
-    } else if (
-      mapClickEvent.x > oPosX * (1 - oTolX) + rect.x &&
-      mapClickEvent.x < oPosX * (1 + oTolX) + rect.x
-    ) {
-      // click is within vertical tolerance
-      if (
-        mapClickEvent.y > oPosY * (1 - oTolY) + rect.y &&
-        mapClickEvent.y < oPosY * (1 + oTolY) + rect.y
-      ) {
-        found = {
-          character: 'Odlaw',
-          pX: oPosX,
-          rX: rect.x,
-          tX: oTolX,
-          pY: oPosY,
-          rY: rect.y,
-          tY: oTolY,
+          key,
+          pX,
+          tX,
+          pY,
+          tY,
         };
       }
     }
