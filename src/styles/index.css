@@ -165,3 +165,9 @@ body {
   text-align: center;
   padding: 0.2rem;
 }
+
+.loading {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+}

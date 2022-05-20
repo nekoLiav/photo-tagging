@@ -2,6 +2,7 @@ import { main, gameState } from './globals';
 import handleUserGuess from './handleUserGuess';
 import renderMap from './renderMap';
 import renderTimer from './renderTimer';
+// import renderTestBoundaries from './renderTestBoundaries';
 
 const handleMapLoading = (e) => {
   if (e.target.className === 'map-select') {
@@ -17,6 +18,7 @@ const handleMapLoading = (e) => {
     main.append(mapContainer);
 
     renderTimer();
+    gameState.gameInProgress = true;
     // setTimeout(renderTestBoundaries, 1000);
 
     main.addEventListener('click', handleUserGuess);

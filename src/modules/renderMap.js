@@ -1,4 +1,4 @@
-import spaceWaldoCrop from '../assets/maps/space-waldo-crop.jpg';
+import spaceWaldo from '../assets/maps/space-waldo.jpg';
 import iceWaldo from '../assets/maps/ice-waldo.jpg';
 
 const renderMap = (mapAttribute) => {
@@ -6,7 +6,7 @@ const renderMap = (mapAttribute) => {
 
   if (mapAttribute === 'space-waldo') {
     const spaceWaldoImg = new Image();
-    spaceWaldoImg.src = spaceWaldoCrop;
+    spaceWaldoImg.src = spaceWaldo;
     spaceWaldoImg.setAttribute('data-map', 'space-waldo');
     map = spaceWaldoImg;
   } else if (mapAttribute === 'ice-waldo') {

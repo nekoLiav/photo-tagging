@@ -1,6 +1,7 @@
 import { mapContainer, gameState } from './globals';
 import firebaseLbAdd from '../firebase/handleLbAdd';
 import renderLeaderboard from './renderLeaderboard';
+import resetGameState from './resetGameState';
 
 const handleWin = () => {
   const winModal = document.createElement('div');
@@ -23,15 +24,11 @@ const handleWin = () => {
       new Date(Date.now()).toISOString(),
       gameState.timer
     );
+    resetGameState();
     renderLeaderboard();
-    gameState.currentMap = null;
-    gameState.timer = 0;
-    gameState.foundCount = 0;
-    gameState.toFindCount = 0;
-    gameState.gameOver = false;
   });
 
-  gameState.gameOver = true;
+  gameState.gameInProgress = false;
 
   winModal.append(winMessage, nameInput, submitButton);
   mapContainer[0].append(winModal);

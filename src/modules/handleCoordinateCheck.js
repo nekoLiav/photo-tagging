@@ -13,6 +13,8 @@ const handleCoordinateCheck = async (
     const key = menuClickEvent.target.getAttribute('data-key');
     let tolerances;
     let coords;
+
+    // extract server map data to variables for clarity
     iterableServerData.forEach((entry) => {
       if (entry[0] === key) {
         tolerances = entry[1].tolerances;

@@ -7,7 +7,7 @@ export const currentMap = document.getElementsByClassName('current-map');
 export const gameState = {
   currentMap: null,
   timer: 0,
-  foundCount: 0,
+  foundCount: [],
   toFindCount: 0,
-  gameOver: false,
+  gameInProgress: false,
 };
