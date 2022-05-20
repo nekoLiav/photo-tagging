@@ -18,7 +18,11 @@ const handleWin = () => {
   submitButton.textContent = 'Submit';
 
   submitButton.addEventListener('click', () => {
-    firebaseLbAdd(nameInput.value, gameState.timer);
+    firebaseLbAdd(
+      nameInput.value,
+      new Date(Date.now()).toISOString(),
+      gameState.timer
+    );
     renderLeaderboard();
     gameState.currentMap = null;
     gameState.timer = 0;
