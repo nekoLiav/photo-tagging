@@ -1,4 +1,4 @@
-import { main } from './globals';
+import { main, mapConfig } from './globals';
 import handleMapLoading from './handleMapLoading';
 import resetGameState from './resetGameState';
 
@@ -19,25 +19,20 @@ const renderMapSelect = () => {
 
   setTimeout(() => {
     loading.remove();
-    const spaceWaldoContainer = document.createElement('div');
-    const spaceWaldoLabel = document.createElement('p');
-    const iceWaldoContainer = document.createElement('div');
-    const iceWaldoLabel = document.createElement('p');
+    mapConfig.forEach((element) => {
+      const key = Object.keys(element);
+      const { name } = element[key];
 
-    spaceWaldoContainer.className = 'map-select';
-    spaceWaldoLabel.className = 'map-select';
-    spaceWaldoLabel.textContent = 'Space Waldo';
-    spaceWaldoLabel.setAttribute('data-map', 'space-waldo');
-    iceWaldoContainer.className = 'map-select';
-    iceWaldoLabel.className = 'map-select';
-    iceWaldoLabel.textContent = 'Ice Waldo';
-    iceWaldoLabel.setAttribute('data-map', 'ice-waldo');
+      const mapSelector = document.createElement('div');
+      mapSelector.setAttribute('data-map', key);
+      mapSelector.className = 'map-select';
+      mapSelector.textContent = name;
 
-    spaceWaldoContainer.append(spaceWaldoLabel);
-    iceWaldoContainer.append(iceWaldoLabel);
-    mapSelectContainer.append(iceWaldoContainer, spaceWaldoContainer);
+      mapSelectContainer.append(mapSelector);
+    });
+
     mapSelectContainer.addEventListener('click', handleMapLoading);
-  }, 2000);
+  }, 0);
 };
 
 export default renderMapSelect;
