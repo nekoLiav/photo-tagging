@@ -22,10 +22,11 @@ const handleWin = () => {
     firebaseLbAdd(
       nameInput.value,
       new Date(Date.now()).toISOString(),
-      gameState.timer
+      gameState.timer,
+      gameState.currentMap
     );
     resetGameState();
-    renderLeaderboard();
+    setTimeout(renderLeaderboard(gameState.currentMap), 2000);
   });
 
   gameState.gameInProgress = false;

@@ -1,4 +1,4 @@
-import { main } from './globals';
+import { main, mapContainer } from './globals';
 import handleCoordinateCheck from './handleCoordinateCheck';
 import handleMiss from './handleMiss';
 import handleHit from './handleHit';
@@ -25,7 +25,7 @@ const handleUserGuess = async (mapClickEvent) => {
       clickMenu.append(clickMenuItem);
     });
 
-    main.append(clickMenu);
+    mapContainer[0].append(clickMenu);
 
     clickMenu.addEventListener('click', async (menuClickEvent) => {
       const found = await handleCoordinateCheck(

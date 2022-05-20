@@ -1,12 +1,17 @@
 import firebaseLbGet from '../firebase/firebaseLbGet';
 import formatTime from './formatTime';
-import { main } from './globals';
+import { main, gameState } from './globals';
 
 const renderLeaderboard = async () => {
   main.childNodes.forEach((child) => child.remove());
 
+  gameState.currentMap = 'space-waldo';
+
   const leaderboardContainer = document.createElement('div');
   leaderboardContainer.className = 'leaderboard-container';
+
+  const leaderboardMapName = document.createElement('p');
+  leaderboardMapName.className = 'leaderboard-map-name';
 
   const leaderboard = document.createElement('table');
   leaderboard.className = 'leaderboard';
@@ -26,13 +31,15 @@ const renderLeaderboard = async () => {
     leaderboardTimeHeader
   );
   leaderboard.append(leaderboardHeaderContainer);
-  leaderboardContainer.append(leaderboard);
+  leaderboardContainer.append(leaderboardMapName, leaderboard);
   main.append(leaderboardContainer);
 
-  const leaders = await firebaseLbGet();
+  const mapInfo = await firebaseLbGet(gameState.currentMap);
+
+  leaderboardMapName.textContent = mapInfo.metadata.name;
 
   // leaders
-  leaders.spaceWaldo.forEach((leader) => {
+  mapInfo.leaders.forEach((leader) => {
     const leaderContainer = document.createElement('tr');
     const leaderName = document.createElement('td');
     const leaderDate = document.createElement('td');

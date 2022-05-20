@@ -144,8 +144,14 @@ body {
 }
 
 .leaderboard-container {
-  padding: 4rem 1rem;
+  padding: 3rem 1rem;
   overflow: auto;
+}
+
+.leaderboard-map-name {
+  color: white;
+  padding: 1rem;
+  font-weight: bold;
 }
 
 .leaderboard {

@@ -2,13 +2,11 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, updateDoc, arrayUnion } from 'firebase/firestore';
 import firebaseConfig from './firebase-config';
 
-const firebaseLbAdd = async (name, date, time) => {
+const firebaseLbAdd = async (name, date, time, map) => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-
-  // function to modify individual database entries
   await updateDoc(doc(db, 'leaderboards', 'maps'), {
-    spaceWaldo: arrayUnion({ name, date, time }),
+    [map]: { leaders: arrayUnion({ name, date, time }) },
   });
 };
 
