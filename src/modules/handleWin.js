@@ -25,8 +25,8 @@ const handleWin = () => {
       gameState.timer,
       gameState.currentMap
     );
+    renderLeaderboard(gameState.currentMap);
     resetGameState();
-    setTimeout(renderLeaderboard(gameState.currentMap), 2000);
   });
 
   gameState.gameInProgress = false;

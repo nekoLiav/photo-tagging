@@ -5,8 +5,6 @@ import { main, gameState } from './globals';
 const renderLeaderboard = async () => {
   main.childNodes.forEach((child) => child.remove());
 
-  gameState.currentMap = 'space-waldo';
-
   const leaderboardContainer = document.createElement('div');
   leaderboardContainer.className = 'leaderboard-container';
 
