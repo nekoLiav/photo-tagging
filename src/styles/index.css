@@ -177,3 +177,52 @@ body {
   font-size: 2rem;
   text-align: center;
 }
+
+.leaderboard-button {
+  position: fixed;
+  text-align: center;
+  top: 1rem;
+  right: 1rem;
+  color: white;
+  padding: 0.5rem;
+  background: #1a1a1a;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 10rem;
+}
+
+.leaderboard-button:hover {
+  background: #333333;
+}
+
+.leaderboard-selectors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 1rem;
+  color: white;
+}
+
+.leaderboard-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+  height: 2rem;
+  background: #1a1a1a;
+  border-radius: 5px;
+  color: white;
+}
+
+.leaderboard-selector:hover {
+  background: #333333;
+  cursor: pointer;
+}
+
+.selector-header {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}

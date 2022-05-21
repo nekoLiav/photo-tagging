@@ -7,22 +7,16 @@ import renderTimer from './renderTimer';
 const handleMapLoading = (e) => {
   if (e.target.className === 'map-select') {
     main.childNodes.forEach((child) => child.remove());
-
     const map = renderMap(e.target.getAttribute('data-map'));
     const mapContainer = document.createElement('div');
-
     map.classList.add('current-map');
     mapContainer.className = 'map-container';
-
     mapContainer.append(map);
     main.append(mapContainer);
-
     renderTimer();
     gameState.gameInProgress = true;
     // setTimeout(renderTestBoundaries, 1000);
-
     main.addEventListener('click', handleUserGuess);
-
     gameState.currentMap = e.target.getAttribute('data-map');
   }
 };

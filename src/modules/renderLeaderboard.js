@@ -2,7 +2,7 @@ import firebaseLbGet from '../firebase/firebaseLbGet';
 import formatTime from './formatTime';
 import { main, gameState } from './globals';
 
-const renderLeaderboard = async () => {
+const renderLeaderboard = async (map) => {
   main.childNodes.forEach((child) => child.remove());
 
   const leaderboardContainer = document.createElement('div');
@@ -32,7 +32,9 @@ const renderLeaderboard = async () => {
   leaderboardContainer.append(leaderboardMapName, leaderboard);
   main.append(leaderboardContainer);
 
-  const mapInfo = await firebaseLbGet(gameState.currentMap);
+  const mapInfo = await firebaseLbGet(
+    map === undefined ? gameState.currentMap : map
+  );
 
   leaderboardMapName.textContent = mapInfo.metadata.name;
 
