@@ -36,8 +36,6 @@ const renderLeaderboard = async (map) => {
     map === undefined ? gameState.currentMap : map
   );
 
-  leaderboardMapName.textContent = mapInfo.metadata.name;
-
   // leaders
   mapInfo.leaders.forEach((leader) => {
     const leaderContainer = document.createElement('tr');

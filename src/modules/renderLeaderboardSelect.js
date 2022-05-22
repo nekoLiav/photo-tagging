@@ -1,5 +1,4 @@
 import { main, mapConfig } from './globals';
-import firebaseLbGet from '../firebase/firebaseLbGet';
 import renderLeaderboard from './renderLeaderboard';
 
 const renderLeaderboardSelect = () => {
@@ -23,12 +22,11 @@ const renderLeaderboardSelect = () => {
     loading.remove();
     leaderboardSelectors.append(leaderboardSelectorsHeader);
     mapConfig.forEach(async (element) => {
-      const leaderboard = await firebaseLbGet(Object.keys(element));
       const leaderboardSelector = document.createElement('div');
       leaderboardSelector.className = 'leaderboard-selector';
-      leaderboardSelector.textContent = leaderboard.metadata.name;
+      leaderboardSelector.textContent = element.properName;
       leaderboardSelector.addEventListener('click', () =>
-        renderLeaderboard(Object.keys(element)[0])
+        renderLeaderboard(element.literalName)
       );
       leaderboardSelectors.append(leaderboardSelector);
     });

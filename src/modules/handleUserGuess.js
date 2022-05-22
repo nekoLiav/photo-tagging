@@ -1,8 +1,8 @@
-import { main, mapContainer } from './globals';
+import { main, mapContainer, gameState } from './globals';
 import handleCoordinateCheck from './handleCoordinateCheck';
-import handleMiss from './handleMiss';
 import handleHit from './handleHit';
 import firebaseGet from '../firebase/firebaseGet';
+import handleMiss from './handleMiss';
 
 const handleUserGuess = async (mapClickEvent) => {
   if (mapClickEvent.target.classList.contains('current-map')) {
@@ -22,6 +22,13 @@ const handleUserGuess = async (mapClickEvent) => {
         .slice(0, 1)
         .toUpperCase()
         .concat(key.slice(1));
+      if (
+        gameState.foundCount.includes(
+          key.slice(0, 1).toUpperCase().concat(key.slice(1))
+        )
+      ) {
+        clickMenuItem.classList.add('found');
+      }
       clickMenu.append(clickMenuItem);
     });
 
@@ -35,13 +42,15 @@ const handleUserGuess = async (mapClickEvent) => {
       );
       if (found !== undefined) {
         handleHit(found, menuClickEvent);
-      } else {
+      } else if (!menuClickEvent.target.classList.contains('found')) {
         handleMiss(menuClickEvent);
       }
     });
 
-    main.addEventListener('click', () => {
-      clickMenu.remove();
+    main.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('found')) {
+        clickMenu.remove();
+      }
     });
   }
 };

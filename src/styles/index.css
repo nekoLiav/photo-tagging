@@ -106,6 +106,15 @@ body {
   cursor: pointer;
 }
 
+.click-menu p.found {
+  text-decoration: line-through;
+  color: #666666;
+}
+
+.click-menu p.found:hover {
+  background: #121212;
+}
+
 .miss {
   display: flex;
   flex-direction: column;

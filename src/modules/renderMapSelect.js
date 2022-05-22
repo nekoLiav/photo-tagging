@@ -30,14 +30,10 @@ const renderMapSelect = () => {
     loading.remove();
     mapSelectContainer.append(mapSelectorsHeader);
     mapConfig.forEach((element) => {
-      const key = Object.keys(element);
-      const { name } = element[key];
-
       const mapSelector = document.createElement('div');
-      mapSelector.setAttribute('data-map', key);
+      mapSelector.setAttribute('data-map', element.literalName);
       mapSelector.className = 'map-select';
-      mapSelector.textContent = name;
-
+      mapSelector.textContent = element.properName;
       mapSelectContainer.append(mapSelector);
     });
 

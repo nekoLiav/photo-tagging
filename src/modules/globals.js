@@ -6,34 +6,28 @@ export const info = document.getElementsByClassName('info');
 export const currentMap = document.getElementsByClassName('current-map');
 export const mapConfig = [
   {
-    'space-waldo': {
-      name: 'Space Waldo',
-    },
+    literalName: 'space-waldo',
+    properName: 'Space Waldo',
   },
   {
-    'ice-waldo': {
-      name: 'Ice Waldo',
-    },
+    literalName: 'ice-waldo',
+    properName: 'Ice Waldo',
   },
   {
-    'beach-waldo': {
-      name: 'Beach Waldo',
-    },
+    literalName: 'beach-waldo',
+    properName: 'Beach Waldo',
   },
   {
-    'fruit-waldo': {
-      name: 'Fruit Waldo',
-    },
+    literalName: 'fruit-waldo',
+    properName: 'Fruit Waldo',
   },
   {
-    'holly-waldo': {
-      name: 'Holly Waldo',
-    },
+    literalName: 'holly-waldo',
+    properName: 'Holly Waldo',
   },
   {
-    'olympic-waldo': {
-      name: 'Olympic Waldo',
-    },
+    literalName: 'olympic-waldo',
+    properName: 'Olympic Waldo',
   },
 ];
 export const gameState = {
