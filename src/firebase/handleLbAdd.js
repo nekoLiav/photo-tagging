@@ -5,8 +5,8 @@ import firebaseConfig from './firebase-config';
 const firebaseLbAdd = async (name, date, time, map) => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  await updateDoc(doc(db, 'leaderboards', 'maps'), {
-    [`${map}.leaders`]: arrayUnion({ name, date, time }),
+  await updateDoc(doc(db, 'leaderboards', map), {
+    leaders: arrayUnion({ name, date, time }),
   });
 };
 
