@@ -30,7 +30,7 @@ const renderLeaderboardSelect = () => {
       );
       leaderboardSelectors.append(leaderboardSelector);
     });
-  }, 2000);
+  }, 1000);
 };
 
 export default renderLeaderboardSelect;

@@ -2,6 +2,7 @@ import { mapContainer, gameState } from './globals';
 import firebaseLbAdd from '../firebase/handleLbAdd';
 import renderLeaderboard from './renderLeaderboard';
 import resetGameState from './resetGameState';
+import formatTime from './formatTime';
 
 const handleWin = () => {
   gameState.gameInProgress = false;
@@ -16,7 +17,9 @@ const handleWin = () => {
   submitButton.className = 'submit-button';
 
   nameInput.type = 'text';
-  winMessage.textContent = `You found them in ${gameState.timer} seconds! Submit your name to appear on the leaderboard.`;
+  winMessage.textContent = `Your time to finish was ${formatTime(
+    gameState.timer
+  )}! Submit your name to appear on the leaderboard.`;
   submitButton.textContent = 'Submit';
 
   winModal.append(winMessage, nameInput, submitButton);

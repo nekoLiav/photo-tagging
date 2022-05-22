@@ -38,7 +38,7 @@ const renderMapSelect = () => {
     });
 
     mapSelectContainer.addEventListener('click', handleMapLoading);
-  }, 2000);
+  }, 1000);
 };
 
 export default renderMapSelect;

@@ -97,22 +97,37 @@ body {
   border-radius: 5px;
 }
 
-.click-menu p {
-  padding: 1rem;
+.click-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.2rem 0.4rem;
+  gap: 1rem;
 }
 
-.click-menu p:hover {
+.click-menu-item:hover {
   background: #333333;
   cursor: pointer;
 }
 
-.click-menu p.found {
-  text-decoration: line-through;
-  color: #666666;
+.click-menu-item.found:hover {
+  background: #121212;
+  cursor: default;
 }
 
-.click-menu p.found:hover {
+.click-menu-item img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.click-menu-item p.found {
+  text-decoration: line-through;
+  color: #999999;
   background: #121212;
+}
+
+.click-menu-item img.found {
+  filter: saturate(0%);
 }
 
 .miss {
